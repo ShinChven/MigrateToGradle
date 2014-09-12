@@ -23,6 +23,28 @@ ImmigrateToGradle
     }
 ```
 
+## 向工程添加Gradle 脚本文件
+创建两个Gradle 的脚本文件（build.gradle、settings.gradle）到项目根目录<p>
+![Screenshot](https://raw.githubusercontent.com/ShinChven/ImmigrateToGradle/master/screenshots/Image_2.png)
+
+## 使用Android Studio 导入工程 
+1、open project <p>
+![Screenshot](https://raw.githubusercontent.com/ShinChven/ImmigrateToGradle/master/screenshots/Image_3.png) 
+<p>
+2、选中build.gradle 文件 <p>
+![Screenshot](https://raw.githubusercontent.com/ShinChven/ImmigrateToGradle/master/screenshots/Image_4.png) 
+<p>
+3、使用gradle-1.10 进行构建（目前的版本，Android 只支持gradle 1.10版） <p>
+![Screenshot](https://raw.githubusercontent.com/ShinChven/ImmigrateToGradle/master/screenshots/Image_5.png) 
+<p>
+4、如果你是第一次运行Android Studio ，那么请先感谢郭嘉，然后等待配置完成 <p>
+![Screenshot](https://raw.githubusercontent.com/ShinChven/ImmigrateToGradle/master/screenshots/Image_6.png) 
+<p>
+
+
+
+
+
 
 
 
