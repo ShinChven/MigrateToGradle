@@ -3,11 +3,13 @@ ImmigrateToGradle
 
 [android]手动将 ADT的 ANT工程 迁移到Android Studio/ Intellij IDEA 的Gradle工程<p>
 
-首先，新版本的<a href="http://developer.android.com/intl/zh-cn/sdk/installing/migrate.html">eclipse 支持直接将工程导出到Android Studio</a>，
-但是，手动将一个eclipse 工程配置成一个Gradle 工程，将让你熟练的掌握Gradle 的许多常用配置。<p>
+首先，新版本的<a href="http://developer.android.com/intl/zh-cn/sdk/installing/migrate.html">ADT eclipse 支持直接将工程导出到Android Studio</a>，
+但是，手动将一个eclipse 工程配置成一个Gradle 工程，能帮助你熟练的掌握Gradle 的许多常用配置。<p>
 
 ## 准备
-下载一份Gradle，并配置进你的系统环境
+<a href="https://dl.google.com/android/studio/install/0.8.6/android-studio-bundle-135.1339820-windows.exe">Android studio 下载</a>，下载完之后直接安装。<p>
+<a href="https://services.gradle.org/distributions/gradle-1.10-all.zip">gradle 1.10 下载</a>，下载完之后解压，并将其路径配置到系统环境变量“GRADLE_HOME”中。<p>
+<a href="http://www.gradle.org/downloads">其它版本gradle 的下载地址</a>
 
 ## 整理目录
 打开你的工程副本，查看工程结构<p>
