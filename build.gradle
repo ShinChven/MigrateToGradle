@@ -50,7 +50,7 @@ android { // android 工程配置
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
         }
         debug {
-
+            //  signingConfig signingConfigs.release // 如果你的debug版本也需要签名，请将这一行配置解开注释
         }
     }
 
