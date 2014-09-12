@@ -50,7 +50,7 @@ ImmigrateToGradle
 ![Screenshot](https://raw.githubusercontent.com/ShinChven/ImmigrateToGradle/master/screenshots/Image_7.png) <p>
 
 ## 同步工程
-每次更改了build.gradle 文件时，你需要进行工程同步，否则新的配置不会生成<p>
+每次更改了build.gradle 文件时，你需要进行工程同步，否则新的配置不会生效<p>
 ![Screenshot](https://raw.githubusercontent.com/ShinChven/ImmigrateToGradle/master/screenshots/Image_8.png) <p>
 
 ## build.Gradle 文件示例
@@ -125,7 +125,7 @@ android { // android 工程配置
 }
 
 dependencies { // 依赖配置
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(dir: 'libs', include: ['*.jar']) // 整合所有libs 文件夹中的jar 包
     compile 'com.android.support:support-v4:20.0.0'
     compile 'com.android.support:gridlayout-v7:20.0.0'
     compile 'com.android.support:appcompat-v7:20.0.0'
