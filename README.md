@@ -41,22 +41,15 @@ ImmigrateToGradle
 ![Screenshot](https://raw.githubusercontent.com/ShinChven/ImmigrateToGradle/master/screenshots/Image_6.png) 
 <p>
 
+## 简洁有效的使用版本控制
+你的版本控制中不需要这些文件和文件夹，这些都是开发工具的配置文件和编译生成的临时文件，你可以随时将这些文件删除，下次运行gradle 的时候它们又会生成。<p>
+如果将它们放入版本控制中的话，很可能会造成版本控制的管理混乱。<p>
+删除build文件夹可以有效清理缓存<p>
+![Screenshot](https://raw.githubusercontent.com/ShinChven/ImmigrateToGradle/master/screenshots/Image_7.png) <p>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+## 同步工程
+每次更改了build.gradle 文件时，你需要进行工程同步，否则新的配置不会生成<p>
+![Screenshot](https://raw.githubusercontent.com/ShinChven/ImmigrateToGradle/master/screenshots/Image_8.png) <p>
 
 ## build.Gradle 文件示例
 ``` groovy
