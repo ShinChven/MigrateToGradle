@@ -24,6 +24,13 @@ ImmigrateToGradle
         compile 'com.android.support:support-v4:20.0.0'
     }
 ```
+<p>
+## 去除冲突的依赖
+``` groovy
+    compile ('com.github.xxx:1.0'){
+        exclude module: 'appcompat-v7'
+    }
+```
 
 ## 向工程添加Gradle 脚本文件
 创建两个Gradle 的脚本文件（build.gradle、settings.gradle）到项目根目录<p>
