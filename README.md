@@ -1,19 +1,32 @@
 ImmigrateToGradle
 =================
+[android]手动将 ADT的 ANT工程 迁移到Android Studio/ Intellij IDEA 的Gradle工程
+=================
 
-[android]手动将 ADT的 ANT工程 迁移到Android Studio/ Intellij IDEA 的Gradle工程<p>
 
+##更新：<p>
+2014/11/29：<p>
+1、此项目已经过时，在更新了Android 5.0的完整SDK之后，使用Intellij IDEA 14/ Android Stuio 创建gradle 项目会自动下载和配置gradle 2.1，而自己手动下载的2.1似乎无法正确导入Android 工程。<p>
+2、若要将此项目使用最新的SDK和工具打开，请先新建一个Gradle:android 工程，然后将其中的gradle 文件夹复制到此项目中，以让IDEA 来正确读取gradle wraper及其配置，这样方能使用工具自动下载的gradle 2.1或者更新版本。<p>
+3、请自己根据需要或者依照最新的新建工程里面的默认配置修改本项目的build.gradle 文件，以适应新的开发环境，如果日后有空会来更新此项目的。<p>
+4、关于Android 5.0的SDK，如果阁下翻墙无力，可以到<a href="http://pan.baidu.com/s/1pJwmySF">这里</a>下载，但这也不是最新的版本，只是更新到了10月初的版本，buildtools和support 包 在之后升级过几次了，ADB有点小bug，上传量大不作长期维护。可以用Android 手机挂fqrouter2 在局域网中供sdk manager更新，网速飞快。
+
+
+正文
+====
 首先，新版本的<a href="http://developer.android.com/intl/zh-cn/sdk/installing/migrate.html">ADT eclipse 支持直接将工程导出到Android Studio</a>，
 但是，手动将一个eclipse 工程配置成一个Gradle 工程，能帮助你熟练的掌握Gradle 的许多常用配置。<p>
 
 ## 准备
+（注：以下准备可能已经不适用，请查看2014/11/29更新的内容，以正确使用Gradle 2.1。）<p>
 <a href="https://dl.google.com/android/studio/install/0.8.6/android-studio-bundle-135.1339820-windows.exe">Android studio 下载</a>，下载完之后直接安装。<p>
 <a href="https://services.gradle.org/distributions/gradle-1.10-all.zip">gradle 1.10 下载</a>，下载完之后解压，并将其路径配置到系统环境变量“GRADLE_HOME”中。<p>
 <a href="http://www.gradle.org/downloads">其它版本gradle 的下载地址</a>
 
 ## 整理目录
 打开你的工程副本，查看工程结构<p>
-这是一些由开发工具生成的文件，包含着开发工具的对该工程的配置和生成的编译文件，Gradle 用不上这些文件，建议直接删除掉，同时也建议不要把这些文件添加到版本控制中去。
+这是一些由开发工具生成的文件，包含着开发工具的对该工程的配置和生成的编译文件，Gradle 用不上这些文件，建议直接删除掉，同时也建议不要把这些文件添加到版本控制中去。<p>
+（使用IDEA 14自动下载和配置gradle 2.1，请从IDEA的新建工程中拷贝一份gradle 文件夹出来放在这个工程里面，具体请看更新说明。）<p>
 ![Screenshot](https://raw.githubusercontent.com/ShinChven/ImmigrateToGradle/master/screenshots/Image_1.png)
 
 ## jar包去重
