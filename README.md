@@ -57,6 +57,7 @@ ImmigrateToGradle
 ![Screenshot](https://raw.githubusercontent.com/ShinChven/ImmigrateToGradle/master/screenshots/Image_4.png) 
 <p>
 3、使用gradle-1.10 进行构建（目前的版本，Android 只支持gradle 1.10版） <p>
+（更新：使用IDEA 14自动下载和配置gradle 2.1，请从IDEA的新建工程中拷贝一份gradle 文件夹出来放在这个工程里面，然后选择use default gradle wrapper。在没有gradle 文件夹和wrapper 相关文件的时候，此选项不可用。）<p>
 ![Screenshot](https://raw.githubusercontent.com/ShinChven/ImmigrateToGradle/master/screenshots/Image_5.png) 
 <p>
 4、如果你是第一次运行Android Studio ，那么请先感谢郭嘉，然后等待配置完成 <p>
