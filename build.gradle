@@ -1,20 +1,20 @@
 buildscript {
     repositories {
-        mavenCentral()
+        jcenter()
     }
-    dependencies { // 加入android build tools，使用0.+ 为版本号表示自动向maven 获取0.版本下最新的版本。
-        classpath 'com.android.tools.build:gradle:0.+'
+    dependencies {
+        classpath 'com.android.tools.build:gradle:0.13.0'  // Android Gradle Build 插件版本
     }
 }
-apply plugin: 'android'
+apply plugin: 'com.android.application'
 
-repositories { // 配置仓库
-    mavenCentral()
+repositories {
+    jcenter()
 }
 
 android { // android 工程配置
-    compileSdkVersion 20
-    buildToolsVersion "20.0.0"
+    compileSdkVersion 21 // Android 最高SDK版本
+    buildToolsVersion "21.1.1" // 指定构建工程的BuildTools版本，如果提示找 到请更新SDK到最新版本
 
     signingConfigs { // 签名，你可以配置多个签名，然后再在buildTypes 进行指定。
         release {
@@ -26,7 +26,7 @@ android { // android 工程配置
     }
 
     packagingOptions { // 打包配置
-        exclude 'META-INF/LICENSE' // 排除一些文件
+        exclude 'META-INF/LICENSE' // 排除一些文件的配置
         exclude 'META-INF/NOTICE'
         exclude 'META-INF/LICENSE.txt'
         exclude 'META-INF/NOTICE.txt'
@@ -38,8 +38,9 @@ android { // android 工程配置
     }
 
     defaultConfig { // SDK 和版本号配置
-        minSdkVersion 8
-        targetSdkVersion 19
+        applicationId "com.github.ShinChven.immigratetogradle" // 包名 现在叫applicationId
+        minSdkVersion 9
+        targetSdkVersion 21
         versionCode 1
         versionName "1.0"
     }
@@ -54,7 +55,7 @@ android { // android 工程配置
         }
     }
 
-    sourceSets { // 工程结构配置
+    sourceSets { // 工程结构配置，如果你使用的是标准gradle 工程结构就需要把sourceSets 去掉
         main {
             java.srcDirs = ['src']
             aidl.srcDirs = ['src']
@@ -69,18 +70,11 @@ android { // android 工程配置
 
 dependencies { // 依赖配置
     compile fileTree(dir: 'libs', include: ['*.jar']) // 整合所有libs 文件夹中的jar 包
-    compile 'com.android.support:support-v4:20.0.0'
-    compile 'com.android.support:gridlayout-v7:20.0.0'
-    compile 'com.android.support:appcompat-v7:20.0.0'
-    compile 'com.loopj.android:android-async-http:1.4.5' // 1.4.4 不可升级至1.4.5
-    compile('com.fasterxml.jackson.core:jackson-databind:2.4.1.3') {
-        // 需要配置 packagingOptions  'META-INF/LICENSE' NOTICE
-        transitive = true
-    }
-}
-
-tasks.withType(Compile) {
-    options.encoding = "UTF-8"
+    compile project(':MyLib') // 添加MyLib Module 到依赖
+    compile 'com.android.support:support-v4:21.0.0' // 各种supports 包如果提示找不到，请更新SDK中的相应部分到最新版本
+    compile 'com.android.support:gridlayout-v7:21.0.0'
+    compile 'com.android.support:appcompat-v7:21.0.0'
+    compile 'com.loopj.android:android-async-http:1.4.6'
 }
 
 apply plugin: 'idea'
@@ -90,6 +84,10 @@ idea {
         downloadJavadoc = true // 下载文档
         downloadSources = true // 下载源码
     }
+}
+
+task wrapper(type: Wrapper) { // 指定Wrapper的版本，制定以后你的工程中不需要再有Gradle 文件夹
+    gradleVersion = '2.1'
 }
 
 
