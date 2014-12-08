@@ -84,7 +84,7 @@ buildscript {
         classpath 'com.android.tools.build:gradle:0.+'
     }
 }
-apply plugin: 'android'
+apply plugin: 'com.android.application'
 
 repositories { // 配置仓库
     mavenCentral()
@@ -172,4 +172,47 @@ idea {
 
 
 
+```
+## library modue build.gradle 文件示例
+``` groovy
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:0.13.0'
+    }
+}
+apply plugin: 'com.android.library' // 配置为library
+
+repositories {
+    jcenter()
+}
+
+android {
+    compileSdkVersion 21
+    buildToolsVersion "21.1.1"
+
+    defaultConfig {
+        minSdkVersion 9
+        targetSdkVersion 21
+    }
+    sourceSets { // 工程结构配置
+        main {
+            java.srcDirs = ['src']
+            aidl.srcDirs = ['src']
+            renderscript.srcDirs = ['src']
+            res.srcDirs = ['res']
+            assets.srcDirs = ['assets']
+            jniLibs.srcDirs = ['libs'] // 配置此处才会打包jni 的.so 文件
+            manifest.srcFile 'AndroidManifest.xml'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:appcompat-v7:21.0.0'
+    compile 'com.android.support:support-v4:21.0.0'
+}
 ```
