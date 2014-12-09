@@ -2,6 +2,8 @@ ImmigrateToGradle
 =================
 [android]手动将 ADT的 ANT工程 迁移到Android Studio/ Intellij IDEA 的Gradle工程
 =================
+！！这个工程现在有问题，无法打包，家里断网两天了，暂时没有时间解决。
+=================
 
 
 ##更新：<p>
