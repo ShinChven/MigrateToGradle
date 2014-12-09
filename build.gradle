@@ -3,7 +3,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:0.13.0'  // Android Gradle Build 插件版本
+        classpath 'com.android.tools.build:gradle:0.14.2'  // Android Gradle Build 插件版本
     }
 }
 apply plugin: 'com.android.application'
@@ -86,8 +86,5 @@ idea {
     }
 }
 
-task wrapper(type: Wrapper) { // 指定Wrapper的版本，制定以后你的工程中不需要再有Gradle 文件夹
-    gradleVersion = '2.1'
-}
 
 
