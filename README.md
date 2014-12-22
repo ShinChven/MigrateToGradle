@@ -2,7 +2,7 @@ ImmigrateToGradle
 =================
 [android]手动将 ADT的 ANT工程 迁移到Android Studio/ Intellij IDEA 的Gradle工程
 =================
-！！这个工程现在有问题，无法打包，家里断网两天了，暂时没有时间解决。
+正式版的Android Studio 1.0 对eclipse 和ant 用户非常友好，本项目已经不完全适用android studio 正式版，操作步骤不请要参考本项目，只要看看gradle文件的配置就行了。
 =================
 
 
