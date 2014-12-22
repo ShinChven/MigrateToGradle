@@ -13,7 +13,7 @@ Gradle 以module 来管理project，在Gradle 构建的Gradle project中通常�
 2、<a href="http://www.gradle.org/docs/current/userguide/gradle_wrapper.html">Wrapper</a>：你需要Gradle 的Wrapper 来下载和管理当前项目使用的Gradle 的版本，当你的环境中没有配置Gradle 时它可以自动下载Gradle 并配置到你的环境中去。
 如果你在天朝，那么配置Gradle 的时间可能会稍长，所以我一般都是直接从Android Studio 新建的工程中拷贝Wrapper 出来使用，以避免重复配置不同版本的Gradle。<p>
 而如果你不想使用工具中的版，你还可以进行其它配置，见下一点。<p>
-2、在文件夹中建一个app （或者其它什么名字）文件夹来存放你的application module。然后你还需要一个build.gradle 和settings.gradle文件。
+3、在文件夹中建一个app （或者其它什么名字）文件夹来存放你的application module。然后你还需要一个build.gradle 和settings.gradle文件。
 你可以从Android Studio 可视化生成的新工程中拷贝出来使用，一般配置如下：<p>
 build.gradle  --  根目录的build.gradle 文件一般用来配置整个工程
 
@@ -45,7 +45,67 @@ settings.gradle  --  根目录的settings.gradle 文件用来制定哪个文件�
 include ':app'  // 根目录下的一级目录
 include ':libs:module0' // 根目录下的二级目录
 ```
+4、配置你的app module：在其中加入build.gradle，具体配置如下：
+``` groovy
+buildscript {
+    repositories {
+        jcenter() //你所使用的仓库
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:0.14.2' // Gradle 的Android 插件版本
+    }
+}
+apply plugin: 'com.android.application' // 导入Android Application 插件，将此module 配置成application module
 
+repositories {
+    jcenter() // 仓库
+}
+
+android {
+
+    compileSdkVersion 21 // 使用SDK的版本，请配置你SDK中有的最新版本
+    buildToolsVersion "21.1.1" // buildTools 版本，你SDK中有哪个版本配哪个版本，建议更新到最新的版本
+
+
+    defaultConfig {
+        applicationId "com.github.ShinChven.migratetogradle" // 原来的包名，现在叫applicationId
+        minSdkVersion 9
+        targetSdkVersion 21
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes { // 配置打包的版本
+        release { // 发行版
+            runProguard false // 是否混淆
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt' // 默认混淆文件
+            proguardFiles 'proguard-project.txt' // 自定义混淆文件
+        }
+        debug { // debug 版
+
+        }
+    }
+
+	sourceSets { // 如果你的工程是从ANT 中迁移过来，可以使用sourceSets 来配置工程结构，如果你使用的是标准Gradle 结构，可以不需要配置。
+        main {
+            java.srcDirs = ['src']
+            aidl.srcDirs = ['src']
+            renderscript.srcDirs = ['src']
+            res.srcDirs = ['res']
+            assets.srcDirs = ['assets']
+            jniLibs.srcDirs = ['libs'] // 配置此处才会打包jni 的.so 文件
+			jni.srcDirs=['jni']
+            manifest.srcFile 'AndroidManifest.xml'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar']) // 关联libs 文件夹中所有的jar 文件到依赖
+    compile 'com.android.support:appcompat-v7:21.0.0' // 添加SDK 中 support repository 中的appcompat-v7 包的21.0.0版为依赖
+    compile 'com.android.support:support-v4:21.0.0'
+}
+```
 
 
 
