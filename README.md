@@ -124,8 +124,6 @@ dependencies {
 ![Screenshot](https://raw.githubusercontent.com/ShinChven/ImmigrateToGradle/master/screenshots/gradle_3.png)
 <p>
 4、如果你是第一次运行Android Studio ，那么请先感谢郭嘉，然后等待配置完成 <p>
-![Screenshot](https://raw.githubusercontent.com/ShinChven/ImmigrateToGradle/master/screenshots/Image_6.png)
-<p>
 
 
 
