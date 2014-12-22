@@ -13,7 +13,7 @@ Gradle 以module 来管理project，在Gradle 构建的Gradle project中通常�
 2、<a href="http://www.gradle.org/docs/current/userguide/gradle_wrapper.html">Wrapper</a>：你需要Gradle 的Wrapper 来下载和管理当前项目使用的Gradle 的版本，当你的环境中没有配置Gradle 时它可以自动下载Gradle 并配置到你的环境中去。
 如果你在天朝，那么配置Gradle 的时间可能会稍长，所以我一般都是直接从Android Studio 新建的工程中拷贝Wrapper 出来使用，以避免重复配置不同版本的Gradle。<p>
 而如果你不想使用工具中的版，你还可以进行其它配置，见下一点。<p>
-![Screenshot](https://raw.githubusercontent.com/ShinChven/ImmigrateToGradle/master/screenshots/gradle_1.png)
+![Screenshot](https://raw.githubusercontent.com/ShinChven/ImmigrateToGradle/master/screenshots/gradle_1.png)<p>
 3、在文件夹中建一个app （或者其它什么名字）文件夹来存放你的application module，如上图。然后你还需要一个build.gradle 和settings.gradle文件。
 你可以从Android Studio 可视化生成的新工程中拷贝出来使用，一般配置如下：<p>
 build.gradle  --  根目录的build.gradle 文件一般用来配置整个工程
@@ -108,7 +108,7 @@ dependencies {
 }
 ```
 完成这些你的工程就会看起来像这样：
-![Screenshot](https://raw.githubusercontent.com/ShinChven/ImmigrateToGradle/master/screenshots/Image_0.png)
+![Screenshot](https://raw.githubusercontent.com/ShinChven/ImmigrateToGradle/master/screenshots/gradle_0.png)
 
 ##运行工程
 1、open project <p>
