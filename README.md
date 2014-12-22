@@ -19,25 +19,25 @@ Gradle 以module 来管理project，在Gradle 构建的Gradle project中通常�
 build.gradle  --  根目录的build.gradle 文件一般用来配置整个工程
 
 ``` groovy
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:0.14.2'
+    }
+}
 
-    buildscript {
-        repositories {
-            jcenter()
-        }
-        dependencies {
-            classpath 'com.android.tools.build:gradle:0.14.2'
-        }
+allprojects {
+    repositories {
+        jcenter()
     }
+}
 
-    allprojects {
-        repositories {
-            jcenter()
-        }
-    }
-    // 如果你想配置你自己制定的Gradle 版本，加入以下配置，然后在导入工程时选择use customizable gradle wrapper
-    task wrapper(type: Wrapper) {
-        gradleVersion = '2.1'
-    }
+// 如果你想配置你自己制定的Gradle 版本，加入以下配置，然后在导入工程时选择use customizable gradle wrapper
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.1'
+}
 ```
 
 settings.gradle  --  根目录的settings.gradle 文件用来制定哪个文件夹为module，以“:”符号给目录分级
