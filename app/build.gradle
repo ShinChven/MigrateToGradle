@@ -1,0 +1,58 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:0.14.2'
+    }
+}
+apply plugin: 'com.android.application'
+
+repositories {
+    jcenter()
+}
+
+android {
+
+    compileSdkVersion 21
+    buildToolsVersion "21.1.1"
+
+
+    defaultConfig {
+        applicationId "com.github.ShinChven.migratetogradle"
+        minSdkVersion 9
+        targetSdkVersion 21
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            runProguard false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+            proguardFiles 'proguard-project.txt'
+        }
+        debug {
+           
+        }
+    }
+	
+	sourceSets { // 工程结构配置，如果你使用的是标准gradle 工程结构就需要把sourceSets 去掉
+        main {
+            java.srcDirs = ['src']
+            aidl.srcDirs = ['src']
+            renderscript.srcDirs = ['src']
+            res.srcDirs = ['res']
+            assets.srcDirs = ['assets']
+            jniLibs.srcDirs = ['libs'] // 配置此处才会打包jni 的.so 文件
+			jni.srcDirs=['jni']
+            manifest.srcFile 'AndroidManifest.xml'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:appcompat-v7:21.0.0'
+    compile 'com.android.support:support-v4:21.0.0'
+}
