@@ -126,7 +126,7 @@ dependencies {
 4、如果你是第一次运行Android Studio ，那么请先感谢郭嘉，然后等待配置完成 <p>
 
 ## jar包去重
-如果你运气不好遇到了下图，说明你的工程中包含v4 包，它与你gradle 中配置的v4 包冲突了，你需要去重：<p>
+如果你运气不好遇到了下图，说明你的工程中包含的v4 包或者其它什么包在你的dependencies 配置中出现了重复引用的冲突，你需要去重：<p>
 ![Screenshot](https://raw.githubusercontent.com/ShinChven/ImmigrateToGradle/master/screenshots/gradle_2.png)<p>
 
 如果使用Gradle 构建工程，建议将libs 文件夹中的jar 包都转换成gradle dependencies（依赖），而不是直接存放在文件夹中。两者不可同时存在，否则因为包名、文件重复则报错。<p>
