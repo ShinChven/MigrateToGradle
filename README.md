@@ -1,3 +1,62 @@
+#Migrate To Gradle 迁移ADT 的ANT结构工程至Gradle
+
+##工具
+1、Android Studio<p>
+2、Intellij IDEA
+
+##了解Gradle
+Gradle 以module 来管理project，在Gradle 构建的Gradle project中通常包含application module（com.android.application），与library module（com.android.library）两种module。<p>
+在Gradle 的project 中需要使用，基本上全都使用.gradle 文件来配置，是一个脚本化的工程构建，而非原先ADT中那种eclipse 的或视化构建。
+
+##迁移工程
+1、创建一个文件夹来放你的工程，比如Migrate to Gradle。<p>
+2、<a href="http://www.gradle.org/docs/current/userguide/gradle_wrapper.html">Wrapper</a>：你需要Gradle 的Wrapper 来下载和管理当前项目使用的Gradle 的版本，当你的环境中没有配置Gradle 时它可以自动下载Gradle 并配置到你的环境中去。
+如果你在天朝，那么配置Gradle 的时间可能会稍长，所以我一般都是直接从Android Studio 新建的工程中拷贝Wrapper 出来使用，以避免重复配置不同版本的Gradle。<p>
+而如果你不想使用工具中的版，你还可以进行其它配置，见下一点。<p>
+2、在文件夹中建一个app （或者其它什么名字）文件夹来存放你的application module。然后你还需要一个build.gradle 和settings.gradle文件。
+你可以从Android Studio 可视化生成的新工程中拷贝出来使用，一般配置如下：<p>
+build.gradle  --  根目录的build.gradle 文件一般用来配置整个工程
+
+``` groovy
+
+    buildscript {
+        repositories {
+            jcenter()
+        }
+        dependencies {
+            classpath 'com.android.tools.build:gradle:0.14.2'
+        }
+    }
+
+    allprojects {
+        repositories {
+            jcenter()
+        }
+    }
+    // 如果你想配置你自己制定的Gradle 版本，加入以下配置，然后在导入工程时选择use customizable gradle wrapper
+    task wrapper(type: Wrapper) {
+        gradleVersion = '2.1'
+    }
+```
+
+settings.gradle  --  根目录的settings.gradle 文件用来制定哪个文件夹为module，以“:”符号给目录分级
+
+``` groovy
+include ':app'  // 根目录下的一级目录
+include ':libs:module0' // 根目录下的二级目录
+```
+
+
+
+
+
+
+
+
+
+-----------------------------------deprecated 过时分割线-----------------------------------------------
+
+
 ImmigrateToGradle
 =================
 [android]手动将 ADT的 ANT工程 迁移到Android Studio/ Intellij IDEA 的Gradle工程
