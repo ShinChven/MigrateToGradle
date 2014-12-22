@@ -1,1 +1,2 @@
-include ':MyLib' // 添加一个目录为module
+include ':app'
+

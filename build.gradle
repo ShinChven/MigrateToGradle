@@ -1,90 +1,23 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
 buildscript {
     repositories {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:0.14.2'  // Android Gradle Build 插件版本
-    }
-}
-apply plugin: 'com.android.application'
+        classpath 'com.android.tools.build:gradle:0.14.2'
 
-repositories {
-    jcenter()
-}
-
-android { // android 工程配置
-    compileSdkVersion 21 // Android 最高SDK版本
-    buildToolsVersion "21.1.1" // 指定构建工程的BuildTools版本，如果提示找 到请更新SDK到最新版本
-
-    signingConfigs { // 签名，你可以配置多个签名，然后再在buildTypes 进行指定。
-        release {
-            storeFile file("keystore\\key.jks") // 签名文件存放路径
-            storePassword "your.password"
-            keyAlias "your.alias"
-            keyPassword "password"
-        }
-    }
-
-    packagingOptions { // 打包配置
-        exclude 'META-INF/LICENSE' // 排除一些文件的配置
-        exclude 'META-INF/NOTICE'
-        exclude 'META-INF/LICENSE.txt'
-        exclude 'META-INF/NOTICE.txt'
-    }
-
-    lintOptions { // 打包时，也不因为出错中断。
-        checkReleaseBuilds false
-        abortOnError false
-    }
-
-    defaultConfig { // SDK 和版本号配置
-        applicationId "com.github.ShinChven.immigratetogradle" // 包名 现在叫applicationId
-        minSdkVersion 9
-        targetSdkVersion 21
-        versionCode 1
-        versionName "1.0"
-    }
-    buildTypes { // 打包版本配置
-        release {
-            signingConfig signingConfigs.release // 指定签名配置
-            runProguard false // 是否进行Proguard
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
-        }
-        debug {
-            //  signingConfig signingConfigs.release // 如果你的debug版本也需要签名，请将这一行配置解开注释
-        }
-    }
-
-    sourceSets { // 工程结构配置，如果你使用的是标准gradle 工程结构就需要把sourceSets 去掉
-        main {
-            java.srcDirs = ['src']
-            aidl.srcDirs = ['src']
-            renderscript.srcDirs = ['src']
-            res.srcDirs = ['res']
-            assets.srcDirs = ['assets']
-            jniLibs.srcDirs = ['libs'] // 配置此处才会打包jni 的.so 文件
-            manifest.srcFile 'AndroidManifest.xml'
-        }
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
     }
 }
 
-dependencies { // 依赖配置
-    compile fileTree(dir: 'libs', include: ['*.jar']) // 整合所有libs 文件夹中的jar 包
-    compile project(':MyLib') // 添加MyLib Module 到依赖
-    compile 'com.android.support:support-v4:21.0.0' // 各种supports 包如果提示找不到，请更新SDK中的相应部分到最新版本
-    compile 'com.android.support:gridlayout-v7:21.0.0'
-    compile 'com.android.support:appcompat-v7:21.0.0'
-    compile 'com.loopj.android:android-async-http:1.4.6'
-}
-
-apply plugin: 'idea'
-
-idea {
-    module {
-        downloadJavadoc = true // 下载文档
-        downloadSources = true // 下载源码
+allprojects {
+    repositories {
+        jcenter()
     }
 }
 
-
-
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.1'
+}
