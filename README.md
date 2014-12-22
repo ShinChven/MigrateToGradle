@@ -44,7 +44,7 @@ settings.gradle  --  根目录的settings.gradle 文件用来制定哪个文件�
 
 ``` groovy
 include ':app'  // 根目录下的一级目录
-include ':libs:module0' // 根目录下的二级目录
+//include ':libs:module0' // 根目录下的二级目录，如果你需要这个module 的话
 ```
 4、配置你的app module：在其中加入build.gradle，具体配置如下：
 ``` groovy
