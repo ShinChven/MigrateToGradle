@@ -289,3 +289,10 @@ dependencies {
     compile 'com.android.support:support-v4:21.0.0'
 }
 ```
+
+## local.properties文件
+在OS X 系统中，你的工程需要这个文件来告诉工具的gradle 插件，你的sdk在哪。如果不进行配置的话将不能使用gradle 插件中的clean build 等方便的功能。
+``` bash
+echo sdk.dir=$ANDROID_HOME >local.properties
+```
+

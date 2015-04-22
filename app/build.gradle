@@ -1,11 +1,3 @@
-buildscript {
-    repositories {
-        jcenter()
-    }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:0.14.2'
-    }
-}
 apply plugin: 'com.android.application'
 
 repositories {
@@ -14,29 +6,34 @@ repositories {
 
 android {
 
-    compileSdkVersion 21
-    buildToolsVersion "21.1.1"
+    compileSdkVersion 22
+    buildToolsVersion "22.0.1"
 
 
     defaultConfig {
         applicationId "com.github.ShinChven.migratetogradle"
         minSdkVersion 9
-        targetSdkVersion 21
+        targetSdkVersion 22
         versionCode 1
         versionName "1.0"
     }
 
     buildTypes {
         release {
-            runProguard false
+            minifyEnabled false // proGuard 现在改成了 minifyEnabled
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
             proguardFiles 'proguard-project.txt'
         }
         debug {
-           
+
         }
     }
-	
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+
 	sourceSets { // 工程结构配置，如果你使用的是标准gradle 工程结构就需要把sourceSets 去掉
         main {
             java.srcDirs = ['src']
