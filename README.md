@@ -154,13 +154,14 @@ dependencies {
 ```
 
 ## build.Gradle 另外的一些配置，Good luck.
+配置中的版本号，请根据最新sdk 中的版本进行配置 
 ``` groovy
-buildscript {
+bBuildscript { // 这段配置如果放入project 级的build.gradle 中则可以在module 中省掉。
     repositories {
         jcenter()
     }
-    dependencies { // 加入android build tools，使用0.+ 为版本号表示自动向maven 获取0.版本下最新的版本。
-        classpath 'com.android.tools.build:gradle:0.+'
+    dependencies { // 加入android build tools
+        classpath 'com.android.tools.build:gradle:1.1.1'
     }
 }
 apply plugin: 'com.android.application'
@@ -170,8 +171,8 @@ repositories { // 配置仓库
 }
 
 android { // android 工程配置
-    compileSdkVersion 21
-    buildToolsVersion "21.1.1"
+    compileSdkVersion 22
+    buildToolsVersion "22.0.1"
 
     signingConfigs { // 签名，你可以配置多个签名，然后再在buildTypes 进行指定。
         release {
@@ -246,15 +247,8 @@ idea {
 }
 ```
 ## library modue build.gradle 文件示例
+请注意，以下的配置的某些版本号已经过时，请根据自己的sd配置最新的版本号
 ``` groovy
-buildscript {
-    repositories {
-        jcenter()
-    }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:0.13.0'
-    }
-}
 
 apply plugin: 'com.android.library' // 配置为library
 
