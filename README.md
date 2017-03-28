@@ -1,18 +1,18 @@
-#Migrate To Gradle 手动迁移ADT 的ANT结构工程至Gradle
+# Migrate To Gradle 手动迁移ADT 的ANT结构工程至Gradle
 
-##前言
+## 前言
 现在Android Studio 已经发布正式版，其带来的新的功能对于原来的eclipse 用户是非常友好的，只需要指定目录就能自动将代码导入并配置好相关的Gradle 脚本。
 我们可以用正式版的AS中的可视化插件轻松的将旧工程升级到Gradle 构建系统下，而这个项目旨在向大家介绍Gradle 的Android 工程的结构和常用配置。
 
-##工具
+## 工具
 1、Android Studio<p>
 2、Intellij IDEA
 
-##了解Gradle
+## 了解Gradle
 Gradle 以module 来管理project，在Gradle 构建的Gradle project中通常包含application module（com.android.application），与library module（com.android.library）两种module。<p>
 在Gradle 的project 中需要使用，基本上全都使用.gradle 文件来配置，是一个脚本化的工程构建，而非原先ADT中那种eclipse 的或视化构建。
 
-##迁移工程
+## 迁移工程
 1、创建一个文件夹来放你的工程，比如Migrate to Gradle。<p>
 2、<a href="http://www.gradle.org/docs/current/userguide/gradle_wrapper.html">Wrapper</a>：你需要Gradle 的Wrapper 来下载和管理当前项目使用的Gradle 的版本，当你的环境中没有配置Gradle 时它可以自动下载Gradle 并配置到你的环境中去。
 如果你在天朝，那么配置Gradle 的时间可能会稍长，所以我一般都是直接从Android Studio 新建的工程中拷贝Wrapper 出来使用，以避免重复配置不同版本的Gradle。<p>
@@ -118,7 +118,7 @@ dependencies {
 完成这些你的工程就会看起来像这样：<p>
 ![Screenshot](https://raw.githubusercontent.com/ShinChven/ImmigrateToGradle/master/screenshots/gradle_0.png)<p>
 
-##运行工程
+## 运行工程
 1、open project <p>
 ![Screenshot](https://raw.githubusercontent.com/ShinChven/ImmigrateToGradle/master/screenshots/Image_3.png)
 <p>
