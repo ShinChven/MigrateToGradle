@@ -5,7 +5,7 @@
 我们可以用正式版的AS中的可视化插件轻松的将旧工程升级到Gradle 构建系统下，而这个项目旨在向大家介绍Gradle 的Android 工程的结构和常用配置。
 
 ## 工具
-1、Android Studio<p>
+1、Android Studio<br>
 2、Intellij IDEA
 
 ## 了解Gradle
@@ -13,13 +13,15 @@ Gradle 以module 来管理project，在Gradle 构建的Gradle project中通常�
 在Gradle 的project 中需要使用，基本上全都使用.gradle 文件来配置，是一个脚本化的工程构建，而非原先ADT中那种eclipse 的或视化构建。
 
 ## 迁移工程
-1、创建一个文件夹来放你的工程，比如Migrate to Gradle。<p>
-2、<a href="http://www.gradle.org/docs/current/userguide/gradle_wrapper.html">Wrapper</a>：你需要Gradle 的Wrapper 来下载和管理当前项目使用的Gradle 的版本，当你的环境中没有配置Gradle 时它可以自动下载Gradle 并配置到你的环境中去。
-如果你在天朝，那么配置Gradle 的时间可能会稍长，所以我一般都是直接从Android Studio 新建的工程中拷贝Wrapper 出来使用，以避免重复配置不同版本的Gradle。<p>
-而如果你不想使用工具中的版，你还可以进行其它配置，见下一点。<p>
-3、在文件夹中建一个app （或者其它什么名字）文件夹来存放你的application module，请将你原先的工程文件拷贝到app 文件夹中去。然后你还需要一个build.gradle 和settings.gradle文件。看起来如下图：<p>
-![Screenshot](https://raw.githubusercontent.com/ShinChven/ImmigrateToGradle/master/screenshots/gradle_1.png)<p>
-两个文件的配置如下：<p>
+1、创建一个文件夹来放你的工程，比如Migrate to Gradle。
+
+2、<a href="http://www.gradle.org/docs/current/userguide/gradle_wrapper.html">Wrapper</a>：你需要Gradle 的Wrapper 来下载和管理当前项目使用的Gradle 的版本，当你的环境中没有配置Gradle 时它可以自动下载Gradle 并配置到你的环境中去。<br>
+如果你在天朝，那么配置Gradle 的时间可能会稍长，所以我一般都是直接从Android Studio 新建的工程中拷贝Wrapper 出来使用，以避免重复配置不同版本的Gradle。<br>
+而如果你不想使用工具中的版，你还可以进行其它配置，见下一点。
+
+3、在文件夹中建一个app （或者其它什么名字）文件夹来存放你的application module，请将你原先的工程文件拷贝到app 文件夹中去。然后你还需要一个build.gradle 和settings.gradle文件。看起来如下图：<br>
+![Screenshot](https://raw.githubusercontent.com/ShinChven/ImmigrateToGradle/master/screenshots/gradle_1.png)<br>
+两个文件的配置如下：<br>
 build.gradle  --  根目录的build.gradle 文件一般用来配置整个工程
 
 ``` groovy
@@ -119,19 +121,16 @@ dependencies {
 ![Screenshot](https://raw.githubusercontent.com/ShinChven/ImmigrateToGradle/master/screenshots/gradle_0.png)<p>
 
 ## 运行工程
-1、open project <p>
+1. open project
 ![Screenshot](https://raw.githubusercontent.com/ShinChven/ImmigrateToGradle/master/screenshots/Image_3.png)
-<p>
-2、选中build.gradle 文件 <p>
+2. 选中build.gradle 文件<br>
 ![Screenshot](https://raw.githubusercontent.com/ShinChven/ImmigrateToGradle/master/screenshots/gradle_4.png)
-<p>
-3、导入：<p>
-    project 中包含Wrapper 选Use default gradle wrpper<p>
-    在project 的task 配置来自动配置gradle 选Use customizable gradle wrapper<p>
-    Use local Gradle distribution 为使用系统变量中配置的gradle <p>
+3. 导入：<br>
+project 中包含Wrapper 选Use default gradle wrpper<br>
+在project 的task 配置来自动配置gradle 选Use customizable gradle wrapper<br>
+Use local Gradle distribution 为使用系统变量中配置的gradle <br>
 ![Screenshot](https://raw.githubusercontent.com/ShinChven/ImmigrateToGradle/master/screenshots/gradle_3.png)
-<p>
-4、如果你是第一次运行Android Studio ，那么请先感谢郭嘉，然后等待配置完成 <p>
+4. 如果你是第一次运行Android Studio ，那么请先感谢郭嘉，然后等待配置完成
 
 ## jar包去重
 如果你运气不好遇到了下图，说明你的工程中包含的v4 包或者其它什么包在你的dependencies 配置中出现了重复引用的冲突，你需要去重：<p>
@@ -144,7 +143,7 @@ dependencies {
         compile 'com.android.support:support-v4:21.0.0'
     }
 ```
-<p>
+
 ## 去除冲突的依赖
 你所添加的那些依赖（dependencies）中的项目的可能会引用同一个项目，却是不同版本，在build 的时候可能会出错，如果要去除冲突，配置如下
 ``` groovy
