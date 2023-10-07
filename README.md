@@ -1,5 +1,8 @@
 # Migrate To Gradle 手动迁移ADT 的ANT结构工程至Gradle
 
+> ⚠️ **Deprecated:** 
+> 这个文档很老了，建议去看官方文档。
+
 ## 前言
 现在Android Studio 已经发布正式版，其带来的新的功能对于原来的eclipse 用户是非常友好的，只需要指定目录就能自动将代码导入并配置好相关的Gradle 脚本。
 我们可以用正式版的AS中的可视化插件轻松的将旧工程升级到Gradle 构建系统下，而这个项目旨在向大家介绍Gradle 的Android 工程的结构和常用配置。
