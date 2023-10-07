@@ -135,6 +135,7 @@ dependencies {
 ![Screenshot](https://raw.githubusercontent.com/ShinChven/ImmigrateToGradle/master/screenshots/gradle_0.png)
 
 ## 运行工程
+
 1. open project
 
 ![Screenshot](https://raw.githubusercontent.com/ShinChven/ImmigrateToGradle/master/screenshots/Image_3.png)
@@ -153,9 +154,10 @@ Use local Gradle distribution 为使用系统变量中配置的gradle
 
 ![Screenshot](https://raw.githubusercontent.com/ShinChven/ImmigrateToGradle/master/screenshots/gradle_3.png)
 
-5. 如果你是第一次运行Android Studio ，那么请先感谢郭嘉，然后等待配置完成
+4. 如果你是第一次运行Android Studio ，那么请先感谢郭嘉，然后等待配置完成
 
 ## jar包去重
+
 如果你运气不好遇到了下图，说明你的工程中包含的v4 包或者其它什么包在你的dependencies 配置中出现了重复引用的冲突，你需要去重：
 
 ![Screenshot](https://raw.githubusercontent.com/ShinChven/ImmigrateToGradle/master/screenshots/gradle_2.png)
@@ -171,6 +173,7 @@ Use local Gradle distribution 为使用系统变量中配置的gradle
 ```
 
 ## 去除冲突的依赖
+
 你所添加的那些依赖（dependencies）中的项目的可能会引用同一个项目，却是不同版本，在build 的时候可能会出错，如果要去除冲突，配置如下
 ``` groovy
     compile ('com.github.xxx:1.0'){
@@ -179,6 +182,7 @@ Use local Gradle distribution 为使用系统变量中配置的gradle
 ```
 
 ## build.Gradle 另外的一些配置，Good luck.
+
 配置中的版本号，请根据最新sdk 中的版本进行配置 
 ``` groovy
 bBuildscript { // 这段配置如果放入project 级的build.gradle 中则可以在module 中省掉。
