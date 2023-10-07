@@ -4,27 +4,34 @@
 > 这个文档很老了，建议去看官方文档。
 
 ## 前言
+
 现在Android Studio 已经发布正式版，其带来的新的功能对于原来的eclipse 用户是非常友好的，只需要指定目录就能自动将代码导入并配置好相关的Gradle 脚本。
 我们可以用正式版的AS中的可视化插件轻松的将旧工程升级到Gradle 构建系统下，而这个项目旨在向大家介绍Gradle 的Android 工程的结构和常用配置。
 
 ## 工具
-1、Android Studio<br>
-2、Intellij IDEA
+
+1. Android Studio
+2. Intellij IDEA
 
 ## 了解Gradle
-Gradle 以module 来管理project，在Gradle 构建的Gradle project中通常包含application module（com.android.application），与library module（com.android.library）两种module。<p>
+
+Gradle 以module 来管理project，在Gradle 构建的Gradle project中通常包含application module（com.android.application），与library module（com.android.library）两种module。
+
 在Gradle 的project 中需要使用，基本上全都使用.gradle 文件来配置，是一个脚本化的工程构建，而非原先ADT中那种eclipse 的或视化构建。
 
 ## 迁移工程
-1、创建一个文件夹来放你的工程，比如Migrate to Gradle。
+1. 创建一个文件夹来放你的工程，比如 Migrate-to-Gradle。
 
-2、<a href="http://www.gradle.org/docs/current/userguide/gradle_wrapper.html">Wrapper</a>：你需要Gradle 的Wrapper 来下载和管理当前项目使用的Gradle 的版本，当你的环境中没有配置Gradle 时它可以自动下载Gradle 并配置到你的环境中去。<br>
-如果你在天朝，那么配置Gradle 的时间可能会稍长，所以我一般都是直接从Android Studio 新建的工程中拷贝Wrapper 出来使用，以避免重复配置不同版本的Gradle。<br>
-而如果你不想使用工具中的版，你还可以进行其它配置，见下一点。
+2. <a href="http://www.gradle.org/docs/current/userguide/gradle_wrapper.html">Wrapper</a>：你需要Gradle 的Wrapper 来下载和管理当前项目使用的Gradle 的版本，当你的环境中没有配置Gradle 时它可以自动下载Gradle 并配置到你的环境中去。
+   1. 如果你在天朝，那么配置Gradle 的时间可能会稍长，所以我一般都是直接从Android Studio 新建的工程中拷贝Wrapper 出来使用，以避免重复配置不同版本的Gradle。
+   2. 而如果你不想使用工具中的版，你还可以进行其它配置，见下一点。
 
-3、在文件夹中建一个app （或者其它什么名字）文件夹来存放你的application module，请将你原先的工程文件拷贝到app 文件夹中去。然后你还需要一个build.gradle 和settings.gradle文件。看起来如下图：<br>
-![Screenshot](https://raw.githubusercontent.com/ShinChven/ImmigrateToGradle/master/screenshots/gradle_1.png)<br>
-两个文件的配置如下：<br>
+3. 在文件夹中建一个app （或者其它什么名字）文件夹来存放你的application module，请将你原先的工程文件拷贝到app 文件夹中去。然后你还需要一个build.gradle 和settings.gradle文件。看起来如下图：
+
+![Screenshot](https://raw.githubusercontent.com/ShinChven/ImmigrateToGradle/master/screenshots/gradle_1.png)
+
+两个文件的配置如下：
+
 build.gradle  --  根目录的build.gradle 文件一般用来配置整个工程
 
 ``` groovy
@@ -55,7 +62,9 @@ settings.gradle  --  根目录的settings.gradle 文件用来制定哪个文件�
 include ':app'  // 根目录下的一级目录
 //include ':libs:module0' // 根目录下的二级目录，如果你需要这个module 的话
 ```
-4、配置你的app module：在其中加入build.gradle，具体配置如下：
+
+4. 配置你的app module：在其中加入build.gradle，具体配置如下：
+
 ``` groovy
 buildscript {
     repositories {
@@ -120,27 +129,41 @@ dependencies {
     compile(project(':LibModule')) // 包含module
 }
 ```
-完成这些你的工程就会看起来像这样：<p>
-![Screenshot](https://raw.githubusercontent.com/ShinChven/ImmigrateToGradle/master/screenshots/gradle_0.png)<p>
+
+完成这些你的工程就会看起来像这样：
+
+![Screenshot](https://raw.githubusercontent.com/ShinChven/ImmigrateToGradle/master/screenshots/gradle_0.png)
 
 ## 运行工程
 1. open project
+
 ![Screenshot](https://raw.githubusercontent.com/ShinChven/ImmigrateToGradle/master/screenshots/Image_3.png)
-2. 选中build.gradle 文件<br>
+
+2. 选中build.gradle 文件
+
 ![Screenshot](https://raw.githubusercontent.com/ShinChven/ImmigrateToGradle/master/screenshots/gradle_4.png)
-3. 导入：<br>
-project 中包含Wrapper 选Use default gradle wrpper<br>
-在project 的task 配置来自动配置gradle 选Use customizable gradle wrapper<br>
-Use local Gradle distribution 为使用系统变量中配置的gradle <br>
+
+3. 导入：
+
+project 中包含Wrapper 选Use default gradle wrpper
+
+在project 的task 配置来自动配置gradle 选Use customizable gradle wrapper
+
+Use local Gradle distribution 为使用系统变量中配置的gradle
+
 ![Screenshot](https://raw.githubusercontent.com/ShinChven/ImmigrateToGradle/master/screenshots/gradle_3.png)
-4. 如果你是第一次运行Android Studio ，那么请先感谢郭嘉，然后等待配置完成
+
+5. 如果你是第一次运行Android Studio ，那么请先感谢郭嘉，然后等待配置完成
 
 ## jar包去重
-如果你运气不好遇到了下图，说明你的工程中包含的v4 包或者其它什么包在你的dependencies 配置中出现了重复引用的冲突，你需要去重：<p>
-![Screenshot](https://raw.githubusercontent.com/ShinChven/ImmigrateToGradle/master/screenshots/gradle_2.png)<p>
+如果你运气不好遇到了下图，说明你的工程中包含的v4 包或者其它什么包在你的dependencies 配置中出现了重复引用的冲突，你需要去重：
 
-如果使用Gradle 构建工程，建议将libs 文件夹中的jar 包都转换成gradle dependencies（依赖），而不是直接存放在文件夹中。两者不可同时存在，否则因为包名、文件重复则报错。<p>
-例如，android-support-v4.jar 你可以在build.Gradle 中这样配置 <p>
+![Screenshot](https://raw.githubusercontent.com/ShinChven/ImmigrateToGradle/master/screenshots/gradle_2.png)
+
+如果使用Gradle 构建工程，建议将libs 文件夹中的jar 包都转换成gradle dependencies（依赖），而不是直接存放在文件夹中。两者不可同时存在，否则因为包名、文件重复则报错。
+
+例如，android-support-v4.jar 你可以在build.Gradle 中这样配置
+
 ``` groovy
     dependencies { // 依赖配置
         compile 'com.android.support:support-v4:21.0.0'
@@ -248,8 +271,11 @@ idea {
     }
 }
 ```
+
 ## library modue build.gradle 文件示例
+
 请注意，以下的配置的某些版本号已经过时，请根据自己的sd配置最新的版本号
+
 ``` groovy
 
 apply plugin: 'com.android.library' // 配置为library
@@ -287,7 +313,9 @@ dependencies {
 ```
 
 ## local.properties文件
+
 在OS X 系统中，你的工程需要这个文件来告诉工具的gradle 插件，你的sdk在哪。如果不进行配置的话将不能使用gradle 插件中的clean build 等方便的功能。
+
 ``` bash
 echo sdk.dir=$ANDROID_HOME >local.properties
 ```
